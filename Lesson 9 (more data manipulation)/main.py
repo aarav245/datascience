@@ -38,3 +38,27 @@ print(datasorted[["Title", "Popularity"]].head(10))
 data["Popularity+10"] = data["Popularity"] + 10
 print("\nPopularity+10")
 print(data[["Title","Popularity","Popularity+10"]].head())
+
+data["Moviescore"] = data["Vote_Average"] * data["Popularity"]
+print("\n Movie Score: ")
+print(data[['Title', "Vote_Average", "Popularity", "Moviescore"]].head())
+
+data["Votescore"] = data["Vote_Average"] * data["Vote_Count"]
+print("\n Vote score: ")
+print(data[['Title', "Vote_Average", "Vote_Count", "Votescore"]].head())
+
+data["Language_Name"] = data["Original_Language"].replace(
+    {"en": "English", "fr": "French", "es": "Spanish", "ja" : "Japanese", "hi": "Hindi"}
+)
+print("\n Language Names: ")
+print(data[["Original_Language", "Language_Name"]].head(20))
+
+data_sorted = data.sort_values(
+    by = ["Original_Language", "Language_Name"], ascending = [True, False]
+
+)
+print("\n Sorted by language and rating: ")
+print(data_sorted[["Title", "Original_Language", "Votescore"]].head(20))
+
+data.to_csv("NewMovieData.csv", index = False)
+print("\n Modified data saved succesful!")
