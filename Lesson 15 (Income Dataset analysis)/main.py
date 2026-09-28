@@ -34,8 +34,7 @@ salarydataset.drop(
 income = set(salarydataset["income"])
 print(income)
 
-income = set(salarydataset["income"])
-print(income)
+
 
 salarydataset["income"] = (
     salarydataset["income"].map({" <=50K" :0," >50K":1}).astype(int)
@@ -63,7 +62,7 @@ salarydataset["married"] = (
             " Married-spouse-absent":0,
             " Widowed":1,
             " Married-civ-spouse":2,
-            " Seperated":3,
+            " Separated":3,
             " Divorced":4,
             " Never-married":5,
             " Married-AF-spouse":6
@@ -84,23 +83,23 @@ salarydataset["relationship"] = (
     ).astype(int)
 )
 
-salarydataset.groupby("education").income.mean().plot(ind = "bar")
+salarydataset.groupby("education").income.mean().plot(kind = "bar")
 plt.show()
 
-salarydataset.groupby("occupation").income.mean().plot(ind = "bar")
+salarydataset.groupby("occupation").income.mean().plot(kind = "bar")
 plt.show()
 
-salarydataset.groupby("relationship").income.mean().plot(ind = "bar")
+salarydataset.groupby("relationship").income.mean().plot(kind = "bar")
 plt.show()
 
-salarydataset.groupby("race").income.mean().plot(ind = "bar")
+salarydataset.groupby("race").income.mean().plot(kind= "bar")
 plt.show()
 
-salarydataset.groupby("gender").income.mean().plot(ind = "bar")
+salarydataset.groupby("gender").income.mean().plot(kind= "bar")
 plt.show()
 
-salarydataset.groupby("workclass").income.mean().plot(ind = "bar")
-plt. show()
+salarydataset.groupby("workclass").income.mean().plot(kind = "bar")
+plt.show()
 
-salarydataset.groupby("married").income.mean().plot(ind = "bar")
+salarydataset.groupby("married").income.mean().plot(kind = "bar")
 plt.show()
